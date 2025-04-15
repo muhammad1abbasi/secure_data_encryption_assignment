@@ -16,7 +16,7 @@ def generate_fernet_key():
 
 # Streamlit App
 def main():
-    st.title("🔐 Secure Data Encryption System")
+    st.title(" Secure Data Encryption System")
 
     menu = ["Home", "Store Data", "Retrieve Data"]
     choice = st.sidebar.radio("Navigate", menu)
@@ -25,7 +25,7 @@ def main():
         st.markdown("Welcome to a secure encryption tool built with **Python + Streamlit**.")
     
     elif choice == "Store Data":
-        st.subheader("🔒 Store Your Data Securely")
+        st.subheader(" Store Your Data Securely")
         user_id = st.text_input("Enter User ID")
         data = st.text_area("Enter Data to Encrypt")
         passkey = st.text_input("Enter Passkey", type="password")
@@ -43,22 +43,22 @@ def main():
                     "key": key
                 }
                 failed_attempts[user_id] = 0
-                st.success("✅ Data encrypted and stored successfully.")
+                st.success(" Data encrypted and stored successfully.")
             else:
                 st.warning("Please fill in all fields.")
 
     elif choice == "Retrieve Data":
-        st.subheader("🔓 Retrieve and Decrypt Your Data")
+        st.subheader(" Retrieve and Decrypt Your Data")
         user_id = st.text_input("Enter User ID")
         passkey = st.text_input("Enter Passkey", type="password")
 
         if st.button("Decrypt"):
             if user_id not in stored_data:
-                st.error("❌ User ID not found.")
+                st.error(" User ID not found.")
                 return
 
             if failed_attempts.get(user_id, 0) >= 3:
-                st.error("🚫 Too many failed attempts. Please reauthorize.")
+                st.error(" Too many failed attempts. Please reauthorize.")
                 return
 
             hashed_input = hash_passkey(passkey)
